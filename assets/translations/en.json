@@ -1,0 +1,10 @@
+{
+    "app_title": "Lab 8",
+    "hello": "Hello",
+    "what_way": "What way do you want to pay?",
+    "pay_by_bank_card": "Pay by bank card",
+    "need_help": "Need help?",
+    "call_us": "Call us",
+    "pay_clicked": "Payment is by bank card"
+
+}
