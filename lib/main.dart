@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lab8/home_page.dart';
 
 void main() async {
@@ -22,10 +23,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        home: HomePage());
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    return ScreenUtilInit(
+      designSize:  Size(screenWidth, screenHeight),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+          ),
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          home: child,
+          ),
+        child: HomePage()
+    );
   }
 }

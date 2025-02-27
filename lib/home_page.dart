@@ -3,17 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:lab8/constants/app_colors.dart';
 import 'package:lab8/constants/app_text_styles.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lab8/generated/locale_keys.g.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return Scaffold(
       backgroundColor: AppColors.backgroundBody,
       appBar: AppBar(
         title: Text(
-          "app_title",
+          LocaleKeys.app_title,
           style: AppTextStyles.px20W900White,
         ).tr(),
         backgroundColor: AppColors.backgroundAppBar,
@@ -24,7 +30,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "hello",
+                LocaleKeys.hello,
                 style: AppTextStyles.px30W500Grey20,
               ).tr(),
               SizedBox(height: 20),
@@ -33,7 +39,7 @@ class HomePage extends StatelessWidget {
                 height: 30,
               ),
               ElevatedButton(
-                child: Text("pay_by_bank_card", style: AppTextStyles.px20W500Green)
+                child: Text(LocaleKeys.pay_by_bank_card, style: AppTextStyles.px20W500Green)
                     .tr(),
                 onPressed: () {
                   Fluttertoast.showToast(
@@ -54,13 +60,13 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
-                    child: Text("EN"),
+                    child: Text("EN",style: AppTextStyles.px14200DeepBlue,),
                     onPressed: () async {
                       await context.setLocale(Locale('en'));
                     },
                   ),
                   ElevatedButton(
-                    child: Text("RU"),
+                    child: Text("RU", style: AppTextStyles.px14200DeepBlue),
                     onPressed: () async {
                       await context.setLocale(Locale('ru'));
                     },
